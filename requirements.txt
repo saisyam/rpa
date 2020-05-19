@@ -1,0 +1,2 @@
+robotframework==3.2.1
+splinter==0.13.0
