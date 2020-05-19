@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 bin/
 include/
+log.html
+output.xml
+report.html
