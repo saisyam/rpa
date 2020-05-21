@@ -24,11 +24,41 @@ class Browser:
         return
 
     @keyword
+    def get_title(self):
+        return self.browser.title
+
+    @keyword
     def check_if_title_is(self, title):
-        print(self.browser.title)
         assert self.browser.title == title
     
     @keyword
     def close_browser(self):
         self.browser.quit()
         return
+    
+    @keyword
+    def input_text(self, field, text):
+        self.browser.fill(field, text)
+        return
+
+    @keyword
+    def click_button(self, locator):
+        element = self.get_element(locator)
+        element.click()
+        return
+
+    @keyword
+    def is_text_present(self, text):
+        assert self.browser.is_text_present(text)
+
+    def get_element(self, locator):
+        key, value = locator.split(":")
+        element = None
+        try:
+            if key == "id":
+                element = self.browser.find_by_id(value)
+            elif key == "name":
+                element = self.browser.find_by_name(value)
+        except Exception as e:
+            element = None
+        return element
