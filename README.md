@@ -1,5 +1,5 @@
 # RPA
-Robot Process Automation using Python [https://robotframework.org/rpa/](RPA framework).
+Robot Process Automation using Python [RPA framework](https://robotframework.org/rpa/).
 
 # Browser
-A [https://github.com/saisyam/rpa/blob/master/RPALib/Browser.py](Browser) RPA Library using Python [https://splinter.readthedocs.io/en/latest/](Splinter)
+A [Browser](https://github.com/saisyam/rpa/blob/master/RPALib/Browser.py) RPA Library using Python [Splinter](https://splinter.readthedocs.io/en/latest/)
