@@ -17,38 +17,26 @@ class RemoteServer(xmlrpc.XMLRPC):
         return self.args[name]
     
     def xmlrpc_run_keyword(self, name, args, kwargs=None):
-        print(name)
-        print(args)
         if name == "add":
             return self.xmlrpc_add(int(args[0]), int(args[1]))
         elif name == "numbers_should_be_equal":
             return self.xmlrpc_numbers_should_be_equal(int(args[0]), int(args[1]))
-        
 
     def xmlrpc_add(self, x, y):
-        resp = {}
-        resp['output'] = str(x+y)
-        resp['status'] = "PASS"
-        resp['return'] = x+y
-        resp['error'] = ""
-        resp['traceback'] = ""
-        print(resp)
-        return resp
+        return self.send_result("PASS", x+y)
 
     def xmlrpc_numbers_should_be_equal(self, x, y):
-        resp = {}
         if x == y:
-            resp['status'] = "PASS"
-            resp['return'] = "TRUE"
+            return self.send_result('PASS', True)
         else:
-            resp['status'] = "FAIL"
-            resp['error'] = "Numbers are not equal"
-            resp['return'] = "FALSE"
-        resp['return'] = ""
-        resp['error'] = ""
-        resp['traceback'] = ""
+            return self.send_result("FAIL", False, "Numbers are not equal")   
+        
+    def send_result(self, status, return_value, error=""):
+        resp = {}
+        resp['error'] = error
+        resp['status'] = status
+        resp['return'] = return_value
         return resp
-
 
 if __name__ == '__main__':
     r = RemoteServer()
