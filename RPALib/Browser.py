@@ -48,6 +48,19 @@ class Browser:
         return
 
     @keyword
+    def click_item_by_class(self, locator):
+        key, value = locator.split(":")
+        element = self.browser.find_by_css(''+key+'[class="'+value+'"]')
+        element.click()
+        return
+    
+    @keyword
+    def click_item_by_text(self, text):
+        element = self.browser.find_by_text(text)
+        element.click()
+        return
+    
+    @keyword
     def is_text_present(self, text):
         assert self.browser.is_text_present(text)
 

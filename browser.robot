@@ -16,3 +16,12 @@ Query Google for Saisyam
     Click Button        name:btnK
     Is Text Present     saisyam.com
     Close Browser
+
+Select Mobiles Category in Amazon
+    Open Chrome Browser
+    Open Url            https://amazon.in
+    Click Button        id:nav-hamburger-menu
+    Click Item By Text  Mobiles, Computers
+    Click Item By Text  All Mobile Phones
+    Is Text Present     Mobiles & Accessories
+    Close Browser
