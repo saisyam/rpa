@@ -3,6 +3,17 @@ Library     DebugLibrary
 Library    ./RPALib/Browser.py
 
 *** Test Cases ***
+
+Filter Mobiles By Samsung in Amazon
+    Open Chrome Browser
+    Open Url            https://amazon.in
+    Click Button        id:nav-hamburger-menu
+    Click Item By Text  Mobiles, Computers
+    Click Item By Text  All Mobile Phones
+    Check Item          s-ref-checkbox-Samsung
+    Is Text Present     Mobiles & Accessories : Samsung
+    Close Browser
+    
 Test webpage title
     Open Chrome Browser Headless
     Open Url            https://saisyam.com

@@ -55,6 +55,11 @@ class Browser:
         return
     
     @keyword
+    def check_item(self, text):
+        self.browser.check(text)
+        return
+
+    @keyword
     def click_item_by_text(self, text):
         element = self.browser.find_by_text(text)
         element.click()
