@@ -42,6 +42,12 @@ class Browser:
         return
 
     @keyword
+    def fill_text(self, locator, text):
+        element = self.get_element(locator)
+        element.click()
+        element.fill(text)
+
+    @keyword
     def click_button(self, locator):
         element = self.get_element(locator)
         element.click()
@@ -64,10 +70,17 @@ class Browser:
         element = self.browser.find_by_text(text)
         element.click()
         return
+       
     
     @keyword
     def is_text_present(self, text):
         assert self.browser.is_text_present(text)
+
+    @keyword
+    def url_contains(self, text):
+        if text in self.browser.url:
+            return True
+        return False
 
     def get_element(self, locator):
         key, value = locator.split(":")
@@ -77,6 +90,12 @@ class Browser:
                 element = self.browser.find_by_id(value)
             elif key == "name":
                 element = self.browser.find_by_name(value)
+            elif key == "tag":
+                element = self.browser.find_by_tag(value)
+            elif key == 'text':
+                element = self.browser.find_by_text(value)
+            elif key == 'xpath':
+                element = self.browser.find_by_xpath(value)
         except Exception as e:
             element = None
         return element
