@@ -37,41 +37,23 @@ class Browser:
         return
     
     @keyword
-    def input_text(self, field, text):
-        self.browser.fill(field, text)
-        return
-
-    @keyword
-    def fill_text(self, locator, text):
+    def input_text(self, locator, text):
         element = self.get_element(locator)
         element.click()
         element.fill(text)
+        return
 
     @keyword
-    def click_button(self, locator):
+    def click(self, locator):
         element = self.get_element(locator)
         element.click()
         return
-
-    @keyword
-    def click_item_by_class(self, locator):
-        key, value = locator.split(":")
-        element = self.browser.find_by_css(''+key+'[class="'+value+'"]')
-        element.click()
-        return
-    
+   
     @keyword
     def check_item(self, text):
         self.browser.check(text)
         return
-
-    @keyword
-    def click_item_by_text(self, text):
-        element = self.browser.find_by_text(text)
-        element.click()
-        return
-       
-    
+           
     @keyword
     def is_text_present(self, text):
         assert self.browser.is_text_present(text)
@@ -87,15 +69,24 @@ class Browser:
         element = None
         try:
             if key == "id":
-                element = self.browser.find_by_id(value)
+                if self.browser.is_element_present_by_id(value, wait_time=5):
+                    element = self.browser.find_by_id(value)
             elif key == "name":
-                element = self.browser.find_by_name(value)
+                if self.browser.is_element_present_by_name(value, wait_time=5):
+                    element = self.browser.find_by_name(value)
             elif key == "tag":
-                element = self.browser.find_by_tag(value)
+                if self.browser.is_element_present_by_tag(value, wait_time=5):
+                    element = self.browser.find_by_tag(value)
             elif key == 'text':
-                element = self.browser.find_by_text(value)
+                if self.browser.is_element_present_by_text(value, wait_time=5):
+                    element = self.browser.find_by_text(value)
             elif key == 'xpath':
-                element = self.browser.find_by_xpath(value)
+                if self.browser.is_element_present_by_xpath(value, wait_time=5):
+                    element = self.browser.find_by_xpath(value)
+            elif key == 'css':
+                cval = ''+key+'[class="'+value+'"]'
+                if self.browser.is_element_present_by_css(cval, wait_time=5):
+                    element = self.browser.find_by_css(cval)
         except Exception as e:
             element = None
         return element

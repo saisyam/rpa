@@ -7,9 +7,9 @@ Library    ./RPALib/Browser.py
 Filter Mobiles By Samsung in Amazon
     Open Chrome Browser
     Open Url            https://amazon.in
-    Click Button        id:nav-hamburger-menu
-    Click Item By Text  Mobiles, Computers
-    Click Item By Text  All Mobile Phones
+    Click               id:nav-hamburger-menu
+    Click               text:Mobiles, Computers
+    Click               text:All Mobile Phones
     Check Item          s-ref-checkbox-Samsung
     Is Text Present     Mobiles & Accessories : Samsung
     Close Browser
@@ -23,16 +23,16 @@ Test webpage title
 Query Google for Saisyam
     Open Chrome Browser
     Open Url            https://google.com
-    Input Text          q   saisyam
-    Click Button        name:btnK
+    Input Text          name:q   saisyam
+    Click               name:btnK
     Is Text Present     saisyam.com
     Close Browser
 
 Select Mobiles Category in Amazon
     Open Chrome Browser
     Open Url            https://amazon.in
-    Click Button        id:nav-hamburger-menu
-    Click Item By Text  Mobiles, Computers
-    Click Item By Text  All Mobile Phones
+    Click               id:nav-hamburger-menu
+    Click               text:Mobiles, Computers
+    Click               text:All Mobile Phones
     Is Text Present     Mobiles & Accessories
     Close Browser
