@@ -15,13 +15,13 @@ Filter Mobiles By Samsung in Amazon
     Close Browser
     
 Test webpage title
-    Open Chrome Browser Headless
+    Open Firefox Browser Headless
     Open Url            https://saisyam.com
     Check If Title Is   Saisyam: Developer - Photographer - Foodie
     Close Browser
 
 Query Google for Saisyam
-    Open Chrome Browser
+    Open Chrome Browser Incognito
     Open Url            https://google.com
     Input Text          name:q   saisyam
     Click               name:btnK
@@ -29,7 +29,7 @@ Query Google for Saisyam
     Close Browser
 
 Select Mobiles Category in Amazon
-    Open Chrome Browser
+    Open Chrome Browser Headless Incognito
     Open Url            https://amazon.in
     Click               id:nav-hamburger-menu
     Click               text:Mobiles, Computers

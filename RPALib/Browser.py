@@ -7,15 +7,54 @@ class Browser:
     
     def __init__(self):
         self.browser = None
+        self.btype = None
+
+    @keyword
+    def open_firefox_browser(self):
+        self.browser = splinter.Browser('firefox')
+        self.btype = "firefox"
+        return
+    
+    @keyword
+    def open_firefox_browser_incognito(self):
+        self.browser = splinter.Browser('firefox', incognito=True)
+        self.btype = "firefox"
+        return
+
+    @keyword
+    def open_firefox_browser_headless(self):
+        self.browser = splinter.Browser('firefox', headless=True)
+        self.btype = "firefox"
+        return
+    
+    @keyword
+    def open_firefox_browser_headless_incognito(self):
+        self.browser = splinter.Browser('firefox', headless=True, incognito=True)
+        self.btype = "firefox"
+        return
 
     @keyword
     def open_chrome_browser(self):
         self.browser = splinter.Browser('chrome')
+        self.btype = "chrome"
+        return
+    
+    @keyword
+    def open_chrome_browser_incognito(self):
+        self.browser = splinter.Browser('chrome', incognito=True)
+        self.btype = "chrome"
         return
 
     @keyword
     def open_chrome_browser_headless(self):
         self.browser = splinter.Browser('chrome', headless=True)
+        self.btype = "chrome"
+        return
+    
+    @keyword
+    def open_chrome_browser_headless_incognito(self):
+        self.browser = splinter.Browser('chrome', headless=True, incognito=True)
+        self.btype = "chrome"
         return
     
     @keyword
@@ -46,7 +85,7 @@ class Browser:
     @keyword
     def click(self, locator):
         element = self.get_element(locator)
-        element.click()
+        element.click()            
         return
    
     @keyword
@@ -88,5 +127,6 @@ class Browser:
                 if self.browser.is_element_present_by_css(cval, wait_time=5):
                     element = self.browser.find_by_css(cval)
         except Exception as e:
+            print(e)
             element = None
         return element
